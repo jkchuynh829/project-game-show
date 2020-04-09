@@ -8,10 +8,14 @@ To install:
 npm install
 ```
 
-To start run locally:
+To run locally on `localhost:1234`:
 
 ```
 npm run dev
 ```
 
-`localhost:1234`
+That's it!
+
+A live version should be deployed to:
+
+[https://jkchuynh829.github.io/project-game-show](https://jkchuynh829.github.io/project-game-show)

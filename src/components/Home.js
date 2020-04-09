@@ -3,10 +3,10 @@ import { Link } from "@reach/router";
 
 const Home = () => (
   <div className="container">
-    <Link to="/dashboard">
+    <Link to="/project-game-show/dashboard">
       <button>Dashboard</button>
     </Link>
-    <Link to="/play">
+    <Link to="/project-game-show/play">
       <button>Play</button>
     </Link>
   </div>

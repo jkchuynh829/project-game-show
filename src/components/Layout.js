@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 
   return (
     <div>
-      <Link to="/">Fast Facts</Link>
+      <Link to="/project-game-show">Fast Facts</Link>
       {children}
     </div>
   );

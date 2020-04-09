@@ -13,9 +13,9 @@ const App = () => {
     <GameContext.Provider value={game}>
       <Layout>
         <Router>
-          <Home path="/" />
-          <Dashboard path="/dashboard" />
-          <Questions path="/play" />
+          <Home path="/project-game-show" />
+          <Dashboard path="/project-game-show/dashboard" />
+          <Questions path="/project-game-show/play" />
         </Router>
       </Layout>
     </GameContext.Provider>

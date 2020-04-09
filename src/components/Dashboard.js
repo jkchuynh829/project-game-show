@@ -1,10 +1,52 @@
 import React, { useContext, useState, useEffect } from "react";
+import { css } from "@emotion/core";
 import GameContext from "./GameContext";
+import DashboardQuestion from "./DashboardQuestion";
 import {
   questionsWithIds,
   deleteQuestion,
   postQuestion
 } from "../firebase/utils";
+
+const containerStyle = css`
+  display: flex;
+  width: 960px;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+const headerStyle = css`
+  font-size: 20px;
+  margin-bottom: 30px;
+`;
+
+const formStyle = css`
+  width: 100%;
+  margin-bottom: 50px;
+`;
+
+const inputStyle = css`
+  border: none;
+  font-size: 24px;
+  border-bottom: 2px solid #ececec;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+
+  ::placeholder {
+    font-family: "Fira Code", monospace;
+  }
+`;
+
+const listStyle = css`
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+`;
 
 const Dashboard = () => {
   const [questions, setQuestions] = useContext(GameContext);
@@ -45,13 +87,13 @@ const Dashboard = () => {
   useEffect(() => {}, []);
 
   return (
-    <div className="container">
-      <h2>Questions</h2>
-      <form onSubmit={createQuestion}>
+    <div css={containerStyle}>
+      <h2 css={headerStyle}>Dashboard</h2>
+      <form css={formStyle} onSubmit={createQuestion}>
         <label htmlFor="question">
-          Question:
           <input
             id="question"
+            css={inputStyle}
             value={newQuestion}
             placeholder="New question..."
             onChange={e => updateInput(e.target.value)}
@@ -70,14 +112,14 @@ const Dashboard = () => {
         </label>
         <button>Add Question</button>
       </form>
-      <ul>
+      <ul css={listStyle}>
         {questions.length > 0 ? (
-          questions.map(({ id, question, answer }) => (
-            <li key={id}>
-              <p>{question}</p>
-              <p>({answer ? "True" : "False"})</p>
-              <button onClick={() => removeQuestion(id)}>Delete</button>
-            </li>
+          questions.map(question => (
+            <DashboardQuestion
+              key={question.id}
+              {...question}
+              removeQuestion={removeQuestion}
+            />
           ))
         ) : (
           <li>...</li>

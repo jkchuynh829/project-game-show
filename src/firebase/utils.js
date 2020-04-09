@@ -22,3 +22,14 @@ export const deleteQuestion = id => {
 export const postQuestion = body => {
   return firestore.collection("questions").add(body);
 };
+
+export const getLeaderboard = () => {
+  return firestore
+    .collection("leaderboard")
+    .orderBy("score", "desc")
+    .get();
+};
+
+export const postScore = body => {
+  return firestore.collection("leaderboard").add(body);
+};

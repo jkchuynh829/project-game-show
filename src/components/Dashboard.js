@@ -17,7 +17,7 @@ const Dashboard = () => {
     try {
       const result = await postQuestion({
         question: newQuestion,
-        answer: answer || answer === "true",
+        answer: answer === "true" || answer === true,
         createdAt: new Date()
       });
 
